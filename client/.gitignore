@@ -1,0 +1,16 @@
+.env
+env. 
+env.local
+env.development
+env.test
+env.production
+# Ignore all .env files except for .env.example
+!.env.example
+node_modules
+dist
+build
+.DS_Store
+*.log
+*.lock
+.idea
+.vscode
