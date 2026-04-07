@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   BookOpen,
@@ -19,6 +20,7 @@ import {
 } from "lucide-react";
 
 export default function Learn() {
+  const navigate = useNavigate();
   const categories = [
     {
       title: "Loops",
@@ -152,10 +154,16 @@ export default function Learn() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <button className="rounded-2xl bg-cyan-500 px-6 py-3.5 font-semibold text-black transition hover:-translate-y-0.5">
+                <button
+                  onClick={() => navigate("/visualize/for-loop")}
+                  className="rounded-2xl bg-cyan-500 px-6 py-3.5 font-semibold text-black transition hover:-translate-y-0.5"
+                >
                   Start Learning
                 </button>
-                <button className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10">
+                <button
+                  onClick={() => navigate("/")}
+                  className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10"
+                >
                   Explore Topics
                 </button>
               </div>
@@ -257,7 +265,10 @@ export default function Learn() {
             </p>
           </div>
 
-          <button className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/75 transition hover:bg-white/10">
+          <button
+            onClick={() => navigate("/")}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/75 transition hover:bg-white/10"
+          >
             View all categories
             <ArrowRight className="h-4 w-4" />
           </button>
@@ -289,10 +300,13 @@ export default function Learn() {
 
                 <div className="mt-6 flex items-center justify-between text-sm">
                   <span className="text-white/45">{category.lessons} lessons</span>
-                  <span className="flex items-center gap-2 font-medium text-cyan-300">
+                  <button
+                    onClick={() => navigate("/visualize/for-loop")}
+                    className="flex items-center gap-2 font-medium text-cyan-300 hover:text-cyan-200 transition"
+                  >
                     Explore
                     <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                  </span>
+                  </button>
                 </div>
               </motion.div>
             );
@@ -382,10 +396,16 @@ export default function Learn() {
               Build your learning side with guided lessons, strong visuals, and progress systems that keep students coming back.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <button className="rounded-2xl bg-cyan-500 px-6 py-3.5 font-semibold text-black transition hover:-translate-y-0.5">
+              <button
+                onClick={() => navigate("/")}
+                className="rounded-2xl bg-cyan-500 px-6 py-3.5 font-semibold text-black transition hover:-translate-y-0.5"
+              >
                 Go to Learning Dashboard
               </button>
-              <button className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10">
+              <button
+                onClick={() => navigate("/visualize/for-loop")}
+                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10"
+              >
                 Browse Free Lessons
               </button>
             </div>

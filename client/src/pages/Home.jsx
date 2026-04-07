@@ -325,6 +325,56 @@ export default function MindYourCodeHomepage() {
           </button>
         </div>
       </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 bg-slate-950 py-12">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-16">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/20 text-cyan-300">
+                  <Code2 className="h-5 w-5" />
+                </div>
+                <h3 className="text-xl font-bold">Mind Your Code</h3>
+              </div>
+              <p className="text-white/60">
+                Learn coding with clarity, structure, and style. Visualize code execution step by step.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Learn</h4>
+              <ul className="space-y-2 text-white/60">
+                <li><a href="#features" className="hover:text-white transition">Features</a></li>
+                <li><a href="#how-it-works" className="hover:text-white transition">How it works</a></li>
+                <li><a href="#why-us" className="hover:text-white transition">Why us</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Resources</h4>
+              <ul className="space-y-2 text-white/60">
+                <li><a href="/docs" className="hover:text-white transition">Documentation</a></li>
+                <li><a href="/learn" className="hover:text-white transition">Learning Hub</a></li>
+                <li><a href="/visualize/for-loop" className="hover:text-white transition">Visualizer</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Connect</h4>
+              <ul className="space-y-2 text-white/60">
+                <li><a href="https://github.com" className="hover:text-white transition">GitHub</a></li>
+                <li><a href="mailto:contact@mindyourcode.com" className="hover:text-white transition">Contact</a></li>
+                <li><a href="/login" className="hover:text-white transition">Login</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-8 border-t border-white/10 text-center text-white/40">
+            <p>&copy; 2026 Mind Your Code. All rights reserved. Built with ❤️ for learners.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
