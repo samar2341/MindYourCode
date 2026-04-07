@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BookOpen, Brain, Code2, GraduationCap, LayoutDashboard, PlayCircle, Sparkles, Target, Zap } from "lucide-react";
 
@@ -45,10 +45,6 @@ export default function MindYourCodeHomepage() {
   const handleGetStarted = async () => {
     const ok = await callBackend();
     if (ok) navigate("/learn");
-  };
-
-  const handleDocs = () => {
-    navigate("/docs");
   };
 
   const handleAuthorInfo = async () => {
@@ -158,9 +154,6 @@ export default function MindYourCodeHomepage() {
               <a href="#features">Features</a>
               <a href="#how-it-works">How it works</a>
               <a href="#why-us">Why us</a>
-              <Link to="/docs" className="text-white/70 transition hover:text-white">
-                Docs
-              </Link>
             </div>
 
             <div className="flex items-center gap-3">
@@ -211,12 +204,6 @@ export default function MindYourCodeHomepage() {
                   className="rounded-2xl border border-white/20 px-6 py-3 font-semibold disabled:opacity-50"
                 >
                   {loading ? "Checking backend..." : "Watch Demo"}
-                </button>
-                <button
-                  onClick={handleDocs}
-                  className="rounded-2xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
-                >
-                  View Docs
                 </button>
               </div>
 
