@@ -28,23 +28,19 @@ export default function MindYourCodeHomepage() {
   };
 
   const handleStartLearning = async () => {
-    const ok = await callBackend();
-    if (ok) navigate("/learn");
+    navigate("/learn");
   };
 
   const handleStartFree = async () => {
-    const ok = await callBackend();
-    if (ok) navigate("/learn");
+    navigate("/learn");
   };
 
   const handleWatchDemo = async () => {
-    const ok = await callBackend();
-    if (ok) navigate("/visualize/for-loop");
+    navigate("/visualize/for-loop");
   };
 
   const handleGetStarted = async () => {
-    const ok = await callBackend();
-    if (ok) navigate("/learn");
+    navigate("/learn");
   };
 
   const handleAuthorInfo = async () => {

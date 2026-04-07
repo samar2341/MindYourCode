@@ -9,6 +9,7 @@ import {
   Code2,
   FileText,
   Flame,
+  GitBranch,
   GraduationCap,
   Layers3,
   PlayCircle,
@@ -22,6 +23,22 @@ import {
 export default function Learn() {
   const navigate = useNavigate();
   const categories = [
+    {
+      title: "Pseudocode",
+      description: "Learn to plan solutions with plain English steps before writing code.",
+      icon: FileText,
+      lessons: 8,
+      level: "Foundation",
+      route: "/pseudocode",
+    },
+    {
+      title: "Flowcharts",
+      description: "Master visual logic representation with flowchart symbols and diagrams.",
+      icon: GitBranch,
+      lessons: 10,
+      level: "Foundation",
+      route: "/flowcharts",
+    },
     {
       title: "Loops",
       description: "Master for loops, while loops, nested loops, dry runs, and iteration logic visually.",
@@ -301,7 +318,7 @@ export default function Learn() {
                 <div className="mt-6 flex items-center justify-between text-sm">
                   <span className="text-white/45">{category.lessons} lessons</span>
                   <button
-                    onClick={() => navigate("/visualize/for-loop")}
+                    onClick={() => category.route ? navigate(category.route) : navigate("/visualize/for-loop")}
                     className="flex items-center gap-2 font-medium text-cyan-300 hover:text-cyan-200 transition"
                   >
                     Explore
