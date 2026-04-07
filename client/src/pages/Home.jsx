@@ -1,7 +1,67 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { BookOpen, Brain, Code2, GraduationCap, LayoutDashboard, PlayCircle, Sparkles, Target, Zap } from "lucide-react";
 
 export default function MindYourCodeHomepage() {
+  const navigate = useNavigate();
+  const [statusMessage, setStatusMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const callBackend = async () => {
+    setErrorMessage("");
+    setStatusMessage("");
+    setLoading(true);
+
+    try {
+      const response = await axios.get("/api/status");
+      setStatusMessage(response.data.message || "Backend reachable");
+      return true;
+    } catch (error) {
+      setErrorMessage("Unable to reach backend. Please make sure the server is running.");
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleStartLearning = async () => {
+    const ok = await callBackend();
+    if (ok) navigate("/learn");
+  };
+
+  const handleStartFree = async () => {
+    const ok = await callBackend();
+    if (ok) navigate("/learn");
+  };
+
+  const handleWatchDemo = async () => {
+    const ok = await callBackend();
+    if (ok) navigate("/visualize/for-loop");
+  };
+
+  const handleGetStarted = async () => {
+    const ok = await callBackend();
+    if (ok) navigate("/learn");
+  };
+
+  const handleAuthorInfo = async () => {
+    setLoading(true);
+    setStatusMessage("");
+    setErrorMessage("");
+
+    try {
+      const response = await axios.get("/api/author");
+      setStatusMessage(response.data.author || "Author info loaded");
+    } catch (error) {
+      setErrorMessage("Unable to load author info from backend.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const featureCards = [
     {
       icon: PlayCircle,
@@ -96,9 +156,21 @@ export default function MindYourCodeHomepage() {
               <a href="#why-us">Why us</a>
             </div>
 
-            <button className="rounded-full bg-cyan-500 px-5 py-2 text-sm font-semibold text-black">
-              Start Learning
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleStartLearning}
+                disabled={loading}
+                className="rounded-full bg-cyan-500 px-5 py-2 text-sm font-semibold text-black disabled:opacity-50"
+              >
+                {loading ? "Checking backend..." : "Start Learning"}
+              </button>
+              <button
+                onClick={() => navigate("/login")}
+                className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Login
+              </button>
+            </div>
           </nav>
 
           {/* HERO CONTENT */}
@@ -118,12 +190,20 @@ export default function MindYourCodeHomepage() {
                 Stop memorizing dry runs. Understand how code actually works with step-by-step visualization.
               </p>
 
-              <div className="mt-8 flex gap-4">
-                <button className="rounded-2xl bg-white px-6 py-3 font-semibold text-black">
-                  Start Free
+              <div className="mt-8 flex gap-4 flex-wrap">
+                <button
+                  onClick={handleStartFree}
+                  disabled={loading}
+                  className="rounded-2xl bg-white px-6 py-3 font-semibold text-black disabled:opacity-50"
+                >
+                  {loading ? "Checking backend..." : "Start Free"}
                 </button>
-                <button className="rounded-2xl border border-white/20 px-6 py-3 font-semibold">
-                  Watch Demo
+                <button
+                  onClick={handleWatchDemo}
+                  disabled={loading}
+                  className="rounded-2xl border border-white/20 px-6 py-3 font-semibold disabled:opacity-50"
+                >
+                  {loading ? "Checking backend..." : "Watch Demo"}
                 </button>
               </div>
 
@@ -135,6 +215,13 @@ export default function MindYourCodeHomepage() {
                   </div>
                 ))}
               </div>
+
+              {(statusMessage || errorMessage) && (
+                <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-4 text-left">
+                  {statusMessage && <p className="text-cyan-300">{statusMessage}</p>}
+                  {errorMessage && <p className="text-red-400">{errorMessage}</p>}
+                </div>
+              )}
             </motion.div>
 
             {/* MOCK UI */}
@@ -221,9 +308,22 @@ export default function MindYourCodeHomepage() {
         <p className="mt-4 text-white/60">
           Learn faster with visualization
         </p>
-        <button className="mt-6 rounded-2xl bg-cyan-500 px-6 py-3 font-semibold text-black">
-          Get Started
-        </button>
+        <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <button
+            onClick={handleGetStarted}
+            disabled={loading}
+            className="rounded-2xl bg-cyan-500 px-6 py-3 font-semibold text-black disabled:opacity-50"
+          >
+            {loading ? "Checking backend..." : "Get Started"}
+          </button>
+          <button
+            onClick={handleAuthorInfo}
+            disabled={loading}
+            className="rounded-2xl border border-white/20 bg-white/5 px-6 py-3 font-semibold disabled:opacity-50"
+          >
+            {loading ? "Loading info..." : "Author Info"}
+          </button>
+        </div>
       </section>
     </div>
   );
