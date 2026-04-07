@@ -154,6 +154,12 @@ export default function MindYourCodeHomepage() {
               <a href="#features">Features</a>
               <a href="#how-it-works">How it works</a>
               <a href="#why-us">Why us</a>
+              <button
+                onClick={handleWatchDemo}
+                className="text-white/70 transition hover:text-white"
+              >
+                Visualize
+              </button>
             </div>
 
             <div className="flex items-center gap-3">
@@ -204,6 +210,13 @@ export default function MindYourCodeHomepage() {
                   className="rounded-2xl border border-white/20 px-6 py-3 font-semibold disabled:opacity-50"
                 >
                   {loading ? "Checking backend..." : "Watch Demo"}
+                </button>
+                <button
+                  onClick={handleWatchDemo}
+                  disabled={loading}
+                  className="rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-500 px-6 py-3 font-semibold text-white disabled:opacity-50"
+                >
+                  {loading ? "Checking backend..." : "Visualize Code"}
                 </button>
               </div>
 
@@ -371,7 +384,7 @@ export default function MindYourCodeHomepage() {
           </div>
 
           <div className="mt-8 pt-8 border-t border-white/10 text-center text-white/40">
-            <p>&copy; 2026 Mind Your Code. All rights reserved. Built with ❤️ for learners.</p>
+            <p>&copy; 2026 Mind Your Code. All rights reserved. Built with ❤️ by Samar.</p>
           </div>
         </div>
       </footer>

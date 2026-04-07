@@ -7,6 +7,7 @@ env.production
 # Ignore all .env files except for .env.example
 !.env.example
 node_modules
+node_modules/
 dist
 build
 .DS_Store
