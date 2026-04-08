@@ -5,6 +5,7 @@ import Visualize from "./pages/Visualize";
 import Login from "./pages/Login";
 import Pseudocode from "./pages/Pseudocode";
 import Flowcharts from "./pages/Flowcharts";
+import Docs from "./pages/Docs";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/learn" element={<Learn />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/docs" element={<Docs />} />
         <Route path="/visualize/:id" element={<Visualize />} />
         <Route path="/pseudocode" element={<Pseudocode />} />
         <Route path="/flowcharts" element={<Flowcharts />} />
